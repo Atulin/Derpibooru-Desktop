@@ -4,14 +4,21 @@ $data-height: 1.2rem + ($data-pad * 2)
 .tile
 	position: relative
 	object-fit: cover
-	box-shadow: 0 0 .5rem 0 black
+	max-height: 200px
+
 	display: grid
 	grid-template: "home" 1fr / 1fr
 	align-content: center
 	justify-items: center
+
 	background-color: var(--chitin)
+	box-shadow: 0 0 .5rem 0 black
+	border: none
+	padding: 0
+
 	overflow: hidden
 	cursor: pointer
+	content-visibility: auto
 
 	&:hover
 		&:after

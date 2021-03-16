@@ -1,15 +1,23 @@
-import React from "react";
+import React from 'react';
 import styles from './ImageTile.sass';
-import {Derpi} from "../../Models/Derpi";
+import { MIMEType } from '../../Models/Derpi';
 
-const grab = () => {
-	fetch('https://derpibooru.org/api/v1/json/search/posts?q=rarity')
-		.then(d => d.json())
-		.then(d => console.log(d));
+interface ImageTileProps {
+	url: string;
+	name: string;
+	mime: MIMEType;
 }
 
-export const ImageTile = ({url, alt = null}: Derpi) =>
-	<div className={styles.tile} onClick={grab}>
-		<img src={url} alt={alt ?? 'Image'}/>
-		<div className={styles.data}>skookum</div>
-	</div>
+export const ImageTile = ({ url, name, mime }: ImageTileProps) => {
+	const newUrl =
+		mime === MIMEType.VideoWebm
+			? [...url.split('.').slice(0, -1), 'gif'].join('.')
+			: url;
+
+	return (
+		<button type="button" className={styles.tile}>
+			<img src={newUrl} alt={name} />
+			<div className={styles.data}>skookum</div>
+		</button>
+	);
+};
