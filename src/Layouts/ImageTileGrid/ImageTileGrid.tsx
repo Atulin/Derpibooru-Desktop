@@ -12,13 +12,8 @@ export const ImageTileGrid = ({ images }: ImageTileGridProps) => (
 		{images === undefined ? (
 			<div>Empty</div>
 		) : (
-			images.map((img) => (
-				<ImageTile
-					url={img.representations.thumb}
-					name={img.name}
-					mime={img.mime_type}
-					key={img.id}
-				/>
+			images.map((img, id) => (
+				<ImageTile image={img} id={id} key={img.id} />
 			))
 		)}
 	</div>

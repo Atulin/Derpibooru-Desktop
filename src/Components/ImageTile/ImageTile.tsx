@@ -1,23 +1,45 @@
 import React from 'react';
-import styles from './ImageTile.sass';
-import { MIMEType } from '../../Models/Derpi';
+import { BiDownvote, BiStar, BiUpvote } from 'react-icons/all';
+import styles from './ImageTile.scss';
+import { Image, MIMEType } from '../../Models/Derpi';
 
 interface ImageTileProps {
-	url: string;
-	name: string;
-	mime: MIMEType;
+	image: Image;
+	id: number;
 }
 
-export const ImageTile = ({ url, name, mime }: ImageTileProps) => {
+const open = (id: number) => {
+	console.log(id);
+};
+
+export const ImageTile = ({ image, id }: ImageTileProps) => {
 	const newUrl =
-		mime === MIMEType.VideoWebm
-			? [...url.split('.').slice(0, -1), 'gif'].join('.')
-			: url;
+		image.mime_type === MIMEType.VideoWebm
+			? [
+					...image.representations.thumb.split('.').slice(0, -1),
+					'gif',
+			  ].join('.')
+			: image.representations.thumb;
 
 	return (
-		<button type="button" className={styles.tile}>
-			<img src={newUrl} alt={name} />
-			<div className={styles.data}>skookum</div>
+		<button type="button" className={styles.tile} onClick={() => open(id)}>
+			<img src={newUrl} alt={image.name} />
+
+			<div className={styles.data}>
+				<span className={styles.up}>
+					<BiUpvote />
+					{image.upvotes}
+				</span>
+				<span className={styles.score}>{image.score}</span>
+				<span className={styles.down}>
+					{image.downvotes}
+					<BiDownvote />
+				</span>
+				<span className={styles.fave}>
+					{image.faves}
+					<BiStar />
+				</span>
+			</div>
 		</button>
 	);
 };

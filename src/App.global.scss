@@ -2,26 +2,47 @@
  * @NOTE: Prepend a `~` to css file paths that are in your node_modules
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
+$eyes: 			 #51C130;
+$pupils: 		 #223F3D;
+$mane: 			 #0F546C;
+$chitin: 		 #242424;
+$carapace-dark:  #0B545B;
+$carapace-light: #58C454;
+$eyeshadow: 	 #00322A;
+$aura: 			 #10DC0D;
+$shade:			 rgba($chitin, .7);
+
+$white-outline-color: rgba(255, 255, 255, .5);
+
 *, *:before, *:after {
 	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
 :root {
-	--eyes: #51C130;
-	--pupils: #223F3D;
-	--mane: #0F546C;
-	--chitin: #242424;
-	--carapace-dark: #0B545B;
-	--carapace-light: #58C454;
-	--eyeshadow: #00322A;
-	--aura: #10DC0D;
+	--eyes: 		 	#{$eyes};
+	--pupils: 			#{$pupils};
+	--mane: 			#{$mane};
+	--chitin: 			#{$chitin};
+	--carapace-dark: 	#{$carapace-dark};
+	--carapace-light: 	#{$carapace-light};
+	--eyeshadow: 		#{$eyeshadow};
+	--aura:				#{$aura};
+
+	--shade:			#{$shade};
+
+	--upvote: #0edb0e;
+	--downvote: #ea2929;
+	--score: #ab41ee;
+	--fave: #f6a820;
 }
 
 body {
 	position: relative;
 	color: white;
 	height: 100vh;
-	width: 100vw;
+	width: 100%;
 	margin: 0;
 	padding: 0;
 	background: linear-gradient(
@@ -29,7 +50,7 @@ body {
 			var(--carapace-light) -29.09%,
 			var(--carapace-dark) 51.77%,
 			var(--chitin) 129.35%
-	);
+	) fixed;
 	font-family: sans-serif;
 
 	#root {

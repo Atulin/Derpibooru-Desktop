@@ -57,6 +57,7 @@ export enum Format {
 	Jpg = 'jpg',
 	PNG = 'png',
 	Webm = 'webm',
+	Mp4 = 'mp4',
 }
 
 export interface Intensities {
@@ -70,6 +71,7 @@ export enum MIMEType {
 	ImageJPEG = 'image/jpeg',
 	ImagePNG = 'image/png',
 	VideoWebm = 'video/webm',
+	VideoMp4 = 'video/mp4',
 }
 
 export interface Representations {
@@ -327,6 +329,6 @@ const typeMap: any = {
 		],
 		false
 	),
-	Format: ['jpg', 'png', 'webm'],
-	MIMEType: ['image/jpeg', 'image/png', 'video/webm'],
+	Format: ['jpg', 'png', 'webm', 'mp4'],
+	MIMEType: ['image/jpeg', 'image/png', 'video/webm', 'video/mp4'],
 };
